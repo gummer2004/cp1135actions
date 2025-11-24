@@ -16,7 +16,7 @@ jobs:
 
 
       - name: Deploy to EC2 via SSh
-        uses: applyboy/ssh-action@v1
+        uses: applyboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
