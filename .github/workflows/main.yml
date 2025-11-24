@@ -14,3 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+
+      - name: Deploy to EC2 via SSh
+        uses: applyboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC@_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            # navigate to the project directory on EC2
+            cd /var/www/ed
+
+            # pull the lastest code from GitHub
+            git pull origin main
+
