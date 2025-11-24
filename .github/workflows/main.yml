@@ -23,7 +23,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # navigate to the project directory on EC2
-            cd /var/www/ed
+            cd /var/www/ed/cp1135actions
 
             # pull the lastest code from GitHub
             git pull origin main
