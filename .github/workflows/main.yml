@@ -22,6 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
       #build tailwind css
+      - name: Build Tailwindcss
+        run: npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css build
       #deploy
       - name: Deploy to EC2 via SSh
         uses: appleboy/ssh-action@v1.2.3
