@@ -19,6 +19,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
       #install dependencies
+      - name: Install dependencies
+        run: npm install
       #build tailwind css
       #deploy
       - name: Deploy to EC2 via SSh
