@@ -39,5 +39,5 @@ jobs:
             #git pull origin main
 
             # use rsync to copy files to server
-            rsync -avz --delete ./src /var/wwww/ed/cp1135actions/src
+            rsync -avz --delete ./src /var/www/ed/cp1135actions/src
 
