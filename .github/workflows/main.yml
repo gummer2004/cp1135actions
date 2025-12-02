@@ -30,18 +30,23 @@ jobs:
         run: ls
       #deploy
       - name: Deploy to EC2 via SSh
-        uses: appleboy/ssh-action@v1.2.3
+      #  uses: appleboy/ssh-action@v1.2.3
+        uses: brunett01/rsync-deployments@7.1.0
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            # navigate to the project directory on EC2
-            cd /var/www/ed/cp1135actions
+          remote_host: ${{ secrets.EC2_HOST }}
+          remote_user: ${{ secrets.EC2_USERNAME }}
+          remote_key: ${{ secrets.EC2_SSH_KEY }}
+
+          switches: -avz --delete
+          path: .
+          remote_path: /var/www/ed/cp1135actions/
+          #script: |
+            ## navigate to the project directory on EC2
+            #cd /var/www/ed/cp1135actions
 
             ## pull the lastest code from GitHub
             #git pull origin main
 
-            # use rsync to copy files to server
-            rsync -avz --delete /home/runner/work/cp1135actions/cp1135actions /var/www/ed/cp1135actions
+            ## use rsync to copy files to server
+            #rsync -avz --delete /home/runner/work/cp1135actions/cp1135actions /var/www/ed/cp1135actions
 
