@@ -18,21 +18,17 @@ jobs:
       #setup node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
+
       #install dependencies
       - name: Install dependencies
         run: npm install
+
       #build tailwind css
       - name: Build Tailwindcss
         run: npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --minify
-      - name: view output.css
-        run: cat ./src/styles/output.css
-      - name: get the directory we are in
-        run: pwd
-      - name: list files
-        run: ls
-      #deploy
+
+      #deploy useing SSH and RSYNC
       - name: Deploy to EC2 via SSh
-      #  uses: appleboy/ssh-action@v1.2.3
         uses: burnett01/rsync-deployments@7.1.0
         with:
           remote_host: ${{ secrets.EC2_HOST }}
@@ -40,15 +36,7 @@ jobs:
           remote_key: ${{ secrets.EC2_SSH_KEY }}
 
           switches: -avz --delete
-          path: .
-          remote_path: /var/www/ed/cp1135actions/
-          #script: |
-            ## navigate to the project directory on EC2
-            #cd /var/www/ed/cp1135actions
+          path: ./src
+          remote_path: /var/www/ed/cp1135actions/src
 
-            ## pull the lastest code from GitHub
-            #git pull origin main
-
-            ## use rsync to copy files to server
-            #rsync -avz --delete /home/runner/work/cp1135actions/cp1135actions /var/www/ed/cp1135actions
 
