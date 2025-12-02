@@ -37,6 +37,5 @@ jobs:
 
           switches: -avz --delete
           path: ./src
-          remote_path: /var/www/ed/cp1135actions/src
-
+          remote_path: /var/www/ed/cp1135actions/
 
