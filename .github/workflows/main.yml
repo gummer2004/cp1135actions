@@ -25,7 +25,7 @@ jobs:
 
       #build tailwind css
       - name: Build Tailwindcss
-        run: npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --minify
+        run: npm run build
 
       #deploy useing SSH and RSYNC
       - name: Deploy to EC2 via SSh
